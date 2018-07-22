@@ -4,6 +4,10 @@
     </header>
 
     <div [@fadeInOut]>
-        <span class="text-muted">-- Sample Page --</span>
+        <ul class="orders">
+            <li *ngFor="let order of orders">
+                Room Number:<span>{{order.RoomNbr}}</span>
+            </li>
+        </ul>
     </div>
 </div>

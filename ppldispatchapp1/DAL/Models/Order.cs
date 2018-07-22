@@ -25,8 +25,8 @@ namespace DAL.Models
 
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
-
-
+        public string RoomNbr { get; set; }
+        public DateTime CompletedDate { get; set; }
         public ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

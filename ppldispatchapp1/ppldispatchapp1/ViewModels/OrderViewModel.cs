@@ -14,5 +14,6 @@ namespace ppldispatchapp1.ViewModels
         public int Id { get; set; }
         public decimal Discount { get; set; }
         public string Comments { get; set; }
+        public string RooomNbr { get; set; }
     }
 }
