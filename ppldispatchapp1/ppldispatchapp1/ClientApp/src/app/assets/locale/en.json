@@ -1,4 +1,4 @@
-﻿{
+{
   "app": {
     "Welcome": "Welcome",
     "Notifications": "Notifications",
@@ -159,23 +159,27 @@
     "Date": "Date",
     "Notification": "Notification"
   },
-  "todoDemo": {
-    "management": {
-      "Search": "Search for task...",
-      "HideCompleted": "Hide Completed",
-      "AddTask": "Add Task",
-      "Delete": "Delete task",
-      "Important": "Mark as important",
-      "Task": "Task",
-      "Description": "Description"
+    "todoDemo": {
+        "management": {
+            "Search": "Search for task...",
+            "HideCompleted": "Hide Completed",
+            "AddTask": "Add Task",
+            "Delete": "Delete task",
+            "Important": "Mark as important",
+            "Task": "Task",
+            "Description": "Description"
+        },
+        "editor": {
+            "NewTask": "New Task",
+            "Name": "Name",
+            "TaskNameRequired": "Task name is required",
+            "Description": "Description",
+            "Important": "Mark as important",
+            "AddTask": "Add Task"
+        }
     },
-    "editor": {
-      "NewTask": "New Task",
-      "Name": "Name",
-      "TaskNameRequired": "Task name is required",
-      "Description": "Description",
-      "Important": "Mark as important",
-      "AddTask": "Add Task"
+    "Order": {
+        "Discount": "Discount",
+        "Roomnbr": "Room Number"
     }
-  }
 }

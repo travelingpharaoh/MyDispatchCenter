@@ -1,0 +1,125 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "appService_ppldispatchapp1_name": {
+      "type": "string"
+    },
+    "appServicePlan_ppldispatchapp1_location": {
+      "type": "string"
+    },
+    "appServicePlan_ppldispatchapp1_name": {
+      "type": "string"
+    },
+    "appServicePlan_ppldispatchapp1_resourceGroup": {
+      "type": "string"
+    },
+    "dbserver_mdcdb_ppldispatchapp1_db_name": {
+      "type": "string"
+    },
+    "dbserver_mdcdb_name": {
+      "type": "string"
+    },
+    "dbserver_mdcdb_ppldispatchapp1_db_adminlogin": {
+      "type": "string"
+    },
+    "dbserver_mdcdb_ppldispatchapp1_db_adminpassword": {
+      "type": "securestring"
+    },
+    "dbserver_mdcdb_ppldispatchapp1_db_location": {
+      "type": "string"
+    },
+    "appServicePlan_ppldispatchapp1_skuName": {
+      "type": "string"
+    },
+    "appServicePlan_ppldispatchapp1_skuTier": {
+      "type": "string"
+    },
+    "appServicePlan_ppldispatchapp1_skuFamily": {
+      "type": "string"
+    },
+    "appServicePlan_ppldispatchapp1_skuSize": {
+      "type": "string"
+    },
+    "appServicePlan_ppldispatchapp1_workerSizeId": {
+      "type": "int"
+    }
+  },
+  "resources": [
+    {
+      "location": "[parameters('appServicePlan_ppldispatchapp1_location')]",
+      "name": "[parameters('appService_ppldispatchapp1_name')]",
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2015-08-01",
+      "tags": {
+        "[concat('hidden-related:', resourceId(parameters('appServicePlan_ppldispatchapp1_resourceGroup'),'Microsoft.Web/serverfarms', parameters('appServicePlan_ppldispatchapp1_name')))]": "empty"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverFarms', parameters('appServicePlan_ppldispatchapp1_name'))]",
+        "[concat('Microsoft.Sql/servers/', parameters('dbserver_mdcdb_name'))]"
+      ],
+      "kind": "app",
+      "properties": {
+        "name": "[parameters('appService_ppldispatchapp1_name')]",
+        "serverFarmId": "[resourceId(parameters('appServicePlan_ppldispatchapp1_resourceGroup'),'Microsoft.Web/serverfarms', parameters('appServicePlan_ppldispatchapp1_name'))]",
+        "kind": "app"
+      },
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "resources": [
+        {
+          "name": "connectionstrings",
+          "type": "config",
+          "apiVersion": "2015-08-01",
+          "dependsOn": [
+            "[concat('Microsoft.Web/Sites/', parameters('appService_ppldispatchapp1_name'))]"
+          ],
+          "properties": {
+            "DefaultConnection": {
+              "value": "[concat('Data Source=tcp:', reference(concat('Microsoft.Sql/servers/', parameters('dbserver_mdcdb_name'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', parameters('dbserver_mdcdb_ppldispatchapp1_db_name'), ';User Id=', parameters('dbserver_mdcdb_ppldispatchapp1_db_adminlogin'), '@', parameters('dbserver_mdcdb_name'), ';Password=', parameters('dbserver_mdcdb_ppldispatchapp1_db_adminpassword'))]",
+              "type": 2
+            }
+          }
+        }
+      ]
+    },
+    {
+      "location": "[parameters('dbserver_mdcdb_ppldispatchapp1_db_location')]",
+      "name": "[parameters('dbserver_mdcdb_name')]",
+      "type": "Microsoft.Sql/servers",
+      "apiVersion": "2014-04-01-preview",
+      "properties": {},
+      "resources": [
+        {
+          "location": "[parameters('dbserver_mdcdb_ppldispatchapp1_db_location')]",
+          "name": "[parameters('dbserver_mdcdb_ppldispatchapp1_db_name')]",
+          "type": "databases",
+          "apiVersion": "2014-04-01-preview",
+          "dependsOn": [
+            "[concat('Microsoft.Sql/servers/', parameters('dbserver_mdcdb_name'))]"
+          ],
+          "properties": {
+            "collation": "SQL_Latin1_General_CP1_CI_AS",
+            "maxSizeBytes": "1073741824"
+          }
+        }
+      ]
+    },
+    {
+      "location": "[parameters('appServicePlan_ppldispatchapp1_location')]",
+      "name": "[parameters('appServicePlan_ppldispatchapp1_name')]",
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2015-08-01",
+      "sku": {
+        "name": "[parameters('appServicePlan_ppldispatchapp1_skuName')]",
+        "tier": "[parameters('appServicePlan_ppldispatchapp1_skuTier')]",
+        "family": "[parameters('appServicePlan_ppldispatchapp1_skuFamily')]",
+        "size": "[parameters('appServicePlan_ppldispatchapp1_skuSize')]"
+      },
+      "properties": {
+        "name": "[parameters('appServicePlan_ppldispatchapp1_name')]"
+      }
+    }
+  ]
+}

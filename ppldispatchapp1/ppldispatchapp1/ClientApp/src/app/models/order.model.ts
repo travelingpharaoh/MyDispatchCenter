@@ -1,14 +1,14 @@
 export class Order {
-    //constructor(id: string, discount: string, comments: string, roomnbr?: string) {
-    //    this.Id = id;
-    //    this.Discount = discount;
-    //    this.Comments = comments;
-    //    this.RoomNbr = roomnbr;
+    constructor(id?: number, discount?: number, comments?: string, roomnbr?: string) {
+        this.id = id;
+        this.discount = discount;
+        this.comments = comments;
+        this.roomNbr = roomnbr;
 
-    //}
+    }
 
-    public Id: string;
-    public Discount: string;
-    public Comments: string;
-    public RoomNbr: string;
+    public id: number;
+    public discount: number;
+    public comments: string;
+    public roomNbr: string;
 }

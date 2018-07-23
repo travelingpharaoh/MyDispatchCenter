@@ -3,11 +3,25 @@
         <h3><i class="fa fa-shopping-cart fa-lg page-caption" aria-hidden="true"></i> {{'pageHeader.Orders' | translate}}</h3>
     </header>
 
-    <div [@fadeInOut]>
-        <ul class="orders">
-            <li *ngFor="let order of orders">
-                Room Number:<span>{{order.RoomNbr}}</span>
-            </li>
-        </ul>
-    </div>
+    
+    <ngx-datatable class="material colored-header sm table table-striped table-hover"
+                   [loadingIndicator]="loadingIndicator"
+                   [rows]="rows"
+                   [rowHeight]="35"
+                   [headerHeight]="35"
+                   [footerHeight]="35"
+                   [columns]="columns"
+                   [scrollbarV]="true"
+                   [columnMode]="'force'">
+    </ngx-datatable>
+
+    <ng-template #indexTemplate let-value="value">
+        <strong>{{value}}</strong>
+    </ng-template>
+
+    <ng-template #RoomTemplate let-row="row" let-value="value">
+        <span >          
+            {{value}}
+        </span>
+    </ng-template>
 </div>

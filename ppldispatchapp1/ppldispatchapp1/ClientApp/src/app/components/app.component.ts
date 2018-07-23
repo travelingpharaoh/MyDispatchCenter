@@ -19,6 +19,7 @@ import { ConfigurationService } from '../services/configuration.service';
 import { Permission } from '../models/permission.model';
 import { LoginComponent } from "../components/login/login.component";
 
+
 var alertify: any = require('../assets/scripts/alertify.js');
 
 
@@ -35,7 +36,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   shouldShowLoginModal: boolean;
   removePrebootScreen: boolean;
   newNotificationCount = 0;
-  appTitle = "ppldispatchapp1";
+  appTitle = "My Dispatch Center";
   appLogo = require("../assets/images/logo.png");
 
   stickyToasties: number[] = [];

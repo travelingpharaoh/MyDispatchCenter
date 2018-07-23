@@ -96,7 +96,9 @@ export class UserInfoComponent implements OnInit {
             this.accountService.getUserAndRoles().subscribe(results => this.onCurrentUserDataLoadSuccessful(results[0], results[1]), error => this.onCurrentUserDataLoadFailed(error));
         }
         else {
-            this.accountService.getUser().subscribe(user => this.onCurrentUserDataLoadSuccessful(user, user.roles.map(x => new Role(x))), error => this.onCurrentUserDataLoadFailed(error));
+            this.accountService.getUser().
+                subscribe(user => this.onCurrentUserDataLoadSuccessful(user, user.roles.map(x => new Role(x)))
+                    , error => this.onCurrentUserDataLoadFailed(error));
         }
     }
 
