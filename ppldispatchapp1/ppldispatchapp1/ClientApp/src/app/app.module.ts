@@ -32,6 +32,9 @@ import { NotificationService } from './services/notification.service';
 import { NotificationEndpoint } from './services/notification-endpoint.service';
 import { AccountService } from './services/account.service';
 import { AccountEndpoint } from './services/account-endpoint.service';
+import { OrderService } from './services/order.service';
+import { OrderEndpoint } from './services/order-endpoint.service';
+
 
 import { EqualValidator } from './directives/equal-validator.directive';
 import { LastElementDirective } from './directives/last-element.directive';
@@ -62,9 +65,6 @@ import { UserPreferencesComponent } from "./components/controls/user-preferences
 import { UsersManagementComponent } from "./components/controls/users-management.component";
 import { RolesManagementComponent } from "./components/controls/roles-management.component";
 import { RoleEditorComponent } from "./components/controls/role-editor.component";
-
-
-
 
 @NgModule({
     imports: [
@@ -110,7 +110,7 @@ import { RoleEditorComponent } from "./components/controls/role-editor.component
         BootstrapToggleDirective,
         BootstrapSelectDirective,
         BootstrapDatepickerDirective,
-        GroupByPipe
+        GroupByPipe,
     ],
     providers: [
         { provide: 'BASE_URL', useFactory: getBaseUrl },
@@ -124,7 +124,9 @@ import { RoleEditorComponent } from "./components/controls/role-editor.component
         AccountService,
         AccountEndpoint,
         LocalStoreManager,
-        EndpointFactory
+        EndpointFactory,
+        OrderService,
+        OrderEndpoint
     ],
     bootstrap: [AppComponent]
 })
