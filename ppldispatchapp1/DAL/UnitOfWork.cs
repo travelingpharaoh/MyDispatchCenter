@@ -16,16 +16,17 @@ namespace DAL
     public class UnitOfWork : IUnitOfWork
     {
         readonly ApplicationDbContext _context;
-
+        readonly gcsDbContext _gcsContext;
         ICustomerRepository _customers;
         IProductRepository _products;
         IOrdersRepository _orders;
+        ICaseRepository _cases;
 
 
-
-        public UnitOfWork(ApplicationDbContext context)
+        public UnitOfWork(ApplicationDbContext context, gcsDbContext gcContext)
         {
             _context = context;
+            _gcsContext = gcContext;
         }
 
 
@@ -67,7 +68,15 @@ namespace DAL
             }
         }
 
-
+        public ICaseRepository Cases
+        {
+            get
+            {
+                if (_cases == null)
+                    _cases = new CasetRepository(_gcsContext);
+                return _cases;
+            }
+        }
 
 
         public int SaveChanges()

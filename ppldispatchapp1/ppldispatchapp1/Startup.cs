@@ -58,7 +58,11 @@ namespace ppldispatchapp1
                 options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"], b => b.MigrationsAssembly("ppldispatchapp1"));
                 options.UseOpenIddict();
             });
-
+            services.AddDbContext<gcsDbContext>(options =>
+             {
+                 options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"], b => b.MigrationsAssembly("ppldispatchapp1"));
+                 options.UseOpenIddict();
+             });
             // add identity
             services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -235,7 +239,7 @@ namespace ppldispatchapp1
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "ppldispatchapp1 API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "CaseApp API V1");
             });
 
 

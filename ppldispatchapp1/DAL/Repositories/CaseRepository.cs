@@ -3,22 +3,25 @@
 // Email: support@ebenmonney.com
 // ====================================================
 
-using DAL.Repositories.Interfaces;
+using DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using DAL.Repositories.Interfaces;
 
-namespace DAL
+namespace DAL.Repositories
 {
-    public interface IUnitOfWork
+    public class CasetRepository : Repository<Case>, ICaseRepository
     {
-        ICustomerRepository Customers { get; }
-        IProductRepository Products { get; }
-        IOrdersRepository Orders { get; }
-        ICaseRepository Cases { get; }
+        public CasetRepository(DbContext context) : base(context)
+        { }
 
-        int SaveChanges();
+
+
+
+        private gcsDbContext _appContext => (gcsDbContext)_context;
     }
 }
