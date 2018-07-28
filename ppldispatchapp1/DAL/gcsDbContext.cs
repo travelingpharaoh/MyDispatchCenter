@@ -12,6 +12,7 @@ using DAL.Models.Interfaces;
 namespace DAL
 {
     public partial class gcsDbContext : DbContext
+        //IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
         public gcsDbContext()
         {

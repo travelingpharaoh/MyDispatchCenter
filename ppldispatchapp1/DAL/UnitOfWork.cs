@@ -73,7 +73,7 @@ namespace DAL
             get
             {
                 if (_cases == null)
-                    _cases = new CasetRepository(_gcsContext);
+                    _cases = new CaseRepository(_gcsContext);
                 return _cases;
             }
         }

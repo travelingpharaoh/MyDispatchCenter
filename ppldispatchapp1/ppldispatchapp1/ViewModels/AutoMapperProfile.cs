@@ -57,6 +57,8 @@ namespace ppldispatchapp1.ViewModels
 
             CreateMap<Order, OrderViewModel>()
                 .ReverseMap();
+            CreateMap<Case, CaseViewModel>()
+                .ReverseMap();
         }
     }
 }

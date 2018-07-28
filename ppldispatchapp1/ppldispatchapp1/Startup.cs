@@ -32,6 +32,7 @@ using AppPermissions = DAL.Core.ApplicationPermissions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Rewrite;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 namespace ppldispatchapp1
 {
@@ -58,11 +59,13 @@ namespace ppldispatchapp1
                 options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"], b => b.MigrationsAssembly("ppldispatchapp1"));
                 options.UseOpenIddict();
             });
+            //DbContextOptionsBuilder<gcsDbContext> gcsOptions = new DbContextOptionsBuilder<gcsDbContext>();
+            //gcsOptions.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]);
             services.AddDbContext<gcsDbContext>(options =>
-             {
-                 options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"], b => b.MigrationsAssembly("ppldispatchapp1"));
-                 options.UseOpenIddict();
-             });
+            {
+                options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"], b => b.MigrationsAssembly("ppldispatchapp1"));
+            });
+
             // add identity
             services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -148,7 +151,7 @@ namespace ppldispatchapp1
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "ppldispatchapp1 API", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "MyDispatchCenter API", Version = "v1" });
 
                 c.AddSecurityDefinition("OpenID Connect", new OAuth2Scheme
                 {

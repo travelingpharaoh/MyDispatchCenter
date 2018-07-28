@@ -11,7 +11,6 @@ using Microsoft.Extensions.Logging;
 using ppldispatchapp1.Helpers;
 using Microsoft.Extensions.Options;
 
-
 namespace ppldispatchapp1.Controllers
 {
     [Route("api/[controller]")]
@@ -28,11 +27,36 @@ namespace ppldispatchapp1.Controllers
         }
 
         // GET: api/Order
-        [HttpGet]
-        public IActionResult Get()
+        [HttpGet("{bDate}")]
+        public IActionResult Get(string bDate, [FromQuery] CaseQuerySearch querySearch)
         {
-            var allCases = _unitOfWork.Cases.GetAll();
-            return Ok(Mapper.Map<IEnumerable<CaseViewModel>>(allCases));
+           //var allCases = _unitOfWork.Cases.GetAll();
+            IEnumerable<Case> cases;
+            DateTime beginDate;
+            DateTime endDate;
+            if (bDate.Length > 0)
+            {
+                if (DateTime.TryParse(bDate, out beginDate))
+                {
+                    String.Format("{0:yyyy/MM/dd}", beginDate);
+                }
+                else
+                    return BadRequest();
+                if ((querySearch.EndDate.Length>0)&&(DateTime.TryParse(querySearch.EndDate, out endDate))) 
+                {
+
+                }
+                else
+                    return BadRequest();
+                cases = _unitOfWork.Cases.Find(c => c.ResolvedDate >= beginDate);
+                if (cases.Count() > 0)
+                    return Ok(Mapper.Map<IEnumerable<CaseViewModel>>(cases));
+                else
+                    return NotFound();
+            }
+            
+
+            return NotFound();
         }
 
     }

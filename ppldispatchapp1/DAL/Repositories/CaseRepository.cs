@@ -14,9 +14,9 @@ using DAL.Repositories.Interfaces;
 
 namespace DAL.Repositories
 {
-    public class CasetRepository : Repository<Case>, ICaseRepository
+    public class CaseRepository : Repository<Case>, ICaseRepository
     {
-        public CasetRepository(DbContext context) : base(context)
+        public CaseRepository(DbContext context) : base(context)
         { }
 
 
