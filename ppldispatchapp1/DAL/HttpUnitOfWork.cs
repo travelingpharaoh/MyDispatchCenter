@@ -15,7 +15,7 @@ namespace DAL
 {
     public class HttpUnitOfWork : UnitOfWork
     {
-        public HttpUnitOfWork(ApplicationDbContext context, IHttpContextAccessor httpAccessor, gcsDbContext gcDbContext) : base(context, gcDbContext)
+        public HttpUnitOfWork(ApplicationDbContext context, IHttpContextAccessor httpAccessor, caseAppDbContext gcDbContext) : base(context, gcDbContext)
         {
             context.CurrentUserId = httpAccessor.HttpContext.User.FindFirst(OpenIdConnectConstants.Claims.Subject)?.Value?.Trim();
         }

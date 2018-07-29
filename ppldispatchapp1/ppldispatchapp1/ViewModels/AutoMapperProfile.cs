@@ -58,6 +58,8 @@ namespace ppldispatchapp1.ViewModels
             CreateMap<Order, OrderViewModel>()
                 .ReverseMap();
             CreateMap<Case, CaseViewModel>()
+                .ForMember(c => c.EmployeeName, map => map.MapFrom(s =>s.AssignedToNavigation.FirstName))
+                .ForMember(c => c.EmployeeComision, map=> map.MapFrom(s=>s.AssignedToNavigation.Comision))
                 .ReverseMap();
         }
     }

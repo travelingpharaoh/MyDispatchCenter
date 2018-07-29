@@ -26,6 +26,8 @@ namespace DAL.Core
         public static ApplicationPermission ManageRoles = new ApplicationPermission("Manage Roles", "roles.manage", RolesPermissionGroupName, "Permission to create, delete and modify roles");
         public static ApplicationPermission AssignRoles = new ApplicationPermission("Assign Roles", "roles.assign", RolesPermissionGroupName, "Permission to assign roles to users");
 
+        public const string CasePermissionGroupName = "Case Permissions";
+        public static ApplicationPermission ViewCases = new ApplicationPermission("View Cases", "cases.view", CasePermissionGroupName, "Permission to view available roles");
 
         static ApplicationPermissions()
         {
@@ -36,7 +38,8 @@ namespace DAL.Core
 
                 ViewRoles,
                 ManageRoles,
-                AssignRoles
+                AssignRoles,
+                ViewCases
             };
 
             AllPermissions = allPermissions.AsReadOnly();

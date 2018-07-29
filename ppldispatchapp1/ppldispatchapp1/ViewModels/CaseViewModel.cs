@@ -16,5 +16,7 @@ namespace ppldispatchapp1.ViewModels
         public string Description { get; set; }
         public DateTime ResolvedDate { get; set; }
         public string Title { get; set; }
+        public string EmployeeName { get; set; }
+        public decimal EmployeeComision { get; set; }
     }
 }

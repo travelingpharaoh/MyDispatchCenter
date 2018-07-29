@@ -61,7 +61,7 @@ namespace ppldispatchapp1
             });
             //DbContextOptionsBuilder<gcsDbContext> gcsOptions = new DbContextOptionsBuilder<gcsDbContext>();
             //gcsOptions.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]);
-            services.AddDbContext<gcsDbContext>(options =>
+            services.AddDbContext<caseAppDbContext>(options =>
             {
                 options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"], b => b.MigrationsAssembly("ppldispatchapp1"));
             });

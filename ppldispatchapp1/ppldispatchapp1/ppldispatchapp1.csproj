@@ -53,13 +53,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\models\case.model.ts" />
+    <None Remove="ClientApp\src\app\models\CaseSearch.model.ts" />
     <None Remove="ClientApp\src\app\models\order.model.ts" />
+    <None Remove="ClientApp\src\app\services\case-endpoint.ts" />
+    <None Remove="ClientApp\src\app\services\case.services.ts" />
     <None Remove="ClientApp\src\app\services\order-endpoint.service.ts" />
     <None Remove="ClientApp\src\app\services\order.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\models\case.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\CaseSearch.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\order.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\case.services.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\case-endpoint.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\order-endpoint.service.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\order.service.ts" />
   </ItemGroup>

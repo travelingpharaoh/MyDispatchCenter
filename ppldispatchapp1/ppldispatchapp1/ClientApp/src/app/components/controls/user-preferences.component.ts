@@ -132,4 +132,7 @@ export class UserPreferencesComponent implements OnInit, OnDestroy {
     get canViewOrders() {
         return true; //eg. viewOrdersPermission
     }
+    get canViewCases() {
+        return this.accountService.userHasPermission(Permission.viewCasesPermission); 
+    }
 }

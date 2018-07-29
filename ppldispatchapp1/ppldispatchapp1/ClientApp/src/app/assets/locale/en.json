@@ -4,23 +4,25 @@
     "Notifications": "Notifications",
     "New": "New"
   },
-  "mainMenu": {
-    "Appointments": "Appointments",
-    "Customers": "Customers",
-    "Products": "Products",
-    "Orders": "Orders",
-    "About": "About",
-    "Logout": "Logout"
-  },
-  "pageHeader": {
-    "Dashboard": "Dashboard",
-    "Customers": "Customers",
-    "Products": "Products",
-    "Orders": "Orders",
-    "NotFound": "Not-Found",
-    "About": "About",
-    "Settings": "Settings"
-  },
+    "mainMenu": {
+        "Appointments": "Appointments",
+        "Customers": "Customers",
+        "Products": "Products",
+        "Orders": "Orders",
+        "Cases": "Cases",
+        "About": "About",
+        "Logout": "Logout"
+    },
+    "pageHeader": {
+        "Dashboard": "Dashboard",
+        "Customers": "Customers",
+        "Products": "Products",
+        "Orders": "Orders",
+        "Cases": "Cases",
+        "NotFound": "Not-Found",
+        "About": "About",
+        "Settings": "Settings"
+    },
   "home": {
     "NoWidgets1": "You have no widgets displayed. Goto",
     "NoWidgets2": "to configure available widgets",
@@ -181,5 +183,11 @@
     "Order": {
         "Discount": "Discount",
         "Roomnbr": "Room Number"
+    },
+    "Case": {
+        "caseprice": "Price",
+        "Roomnbr": "Apt. Nbr",
+        "employee fee": "Employee Fee",
+        "employee comision": "Employee Comision"
     }
 }

@@ -22,6 +22,6 @@ namespace DAL.Repositories
 
 
 
-        private gcsDbContext _appContext => (gcsDbContext)_context;
+        private caseAppDbContext _appContext => (caseAppDbContext)_context;
     }
 }

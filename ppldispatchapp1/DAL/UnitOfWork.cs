@@ -16,14 +16,14 @@ namespace DAL
     public class UnitOfWork : IUnitOfWork
     {
         readonly ApplicationDbContext _context;
-        readonly gcsDbContext _gcsContext;
+        readonly caseAppDbContext _gcsContext;
         ICustomerRepository _customers;
         IProductRepository _products;
         IOrdersRepository _orders;
         ICaseRepository _cases;
-        public gcsDbContext GetGcsDbContext() { return _gcsContext; }
+        public caseAppDbContext GetCaseAppDbContext() { return _gcsContext; }
 
-        public UnitOfWork(ApplicationDbContext context, gcsDbContext gcContext)
+        public UnitOfWork(ApplicationDbContext context, caseAppDbContext gcContext)
         {
             _context = context;
             _gcsContext = gcContext;

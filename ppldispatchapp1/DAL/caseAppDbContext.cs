@@ -11,14 +11,14 @@ using DAL.Models.Interfaces;
 
 namespace DAL
 {
-    public partial class gcsDbContext : DbContext
+    public partial class caseAppDbContext : DbContext
         //IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
-        public gcsDbContext()
+        public caseAppDbContext()
         {
         }
 
-        public gcsDbContext(DbContextOptions<gcsDbContext> options)
+        public caseAppDbContext(DbContextOptions<caseAppDbContext> options)
             : base(options)
         {
         }

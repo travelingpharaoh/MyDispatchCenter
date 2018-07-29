@@ -8,15 +8,15 @@ namespace DAL.Services
     public class CaseServices
     {
         private IUnitOfWork _unitOfWork;
-        readonly gcsDbContext _gcsdb;
+        readonly caseAppDbContext _caseAppDb;
         public CaseServices(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _gcsdb = (gcsDbContext) unitOfWork.Cases.GetDbContext();
+            _caseAppDb = (caseAppDbContext) unitOfWork.Cases.GetDbContext();
         }
         public IEnumerable<Case> Find(CaseSearchModel caseQuery)
         {
-            IQueryable <Case> cases=_gcsdb.Cases.AsQueryable();
+            IQueryable <Case> cases=_caseAppDb.Cases.AsQueryable();
             DateTime beginDate;
             DateTime endDate;
 
