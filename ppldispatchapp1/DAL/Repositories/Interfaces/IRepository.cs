@@ -3,6 +3,7 @@
 // Email: support@ebenmonney.com
 // ====================================================
 
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,7 @@ namespace DAL.Repositories.Interfaces
         TEntity GetSingleOrDefault(Expression<Func<TEntity, bool>> predicate);
         TEntity Get(int id);
         IEnumerable<TEntity> GetAll();
+        DbContext GetDbContext();
     }
 
 }

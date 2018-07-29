@@ -21,7 +21,7 @@ namespace DAL
         IProductRepository _products;
         IOrdersRepository _orders;
         ICaseRepository _cases;
-
+        public gcsDbContext GetGcsDbContext() { return _gcsContext; }
 
         public UnitOfWork(ApplicationDbContext context, gcsDbContext gcContext)
         {

@@ -84,5 +84,10 @@ namespace DAL.Repositories
         {
             return _entities.ToList();
         }
+
+        public virtual DbContext GetDbContext()
+        {
+            return _context;
+        }
     }
 }
