@@ -187,7 +187,8 @@
     "Case": {
         "caseprice": "Price",
         "Roomnbr": "Apt. Nbr",
-        "employee fee": "Employee Fee",
-        "employee comision": "Employee Comision"
+        "employeefee": "Employee Fee",
+        "employeecomisions": "Employee Comision",
+        "affecteddate":"Affected Date"
     }
 }

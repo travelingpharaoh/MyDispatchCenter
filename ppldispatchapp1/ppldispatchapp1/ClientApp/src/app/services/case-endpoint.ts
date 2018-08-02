@@ -24,7 +24,7 @@ export class CaseEndpoint extends EndpointFactory {
         let endpointUrl = this.ordersUrl+"/"+caseSearch.BeginDate;
         return this.http.get<T>(endpointUrl, this.getRequestHeaders())
             .catch(error => {
-                return this.handleError(error, () => this.getCasesEndpoint(caseSearch,page, pageSize, ));
+                return this.handleError(error, () => this.getCasesEndpoint(caseSearch,page, pageSize ));
             });
     }
 }

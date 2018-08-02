@@ -65,6 +65,9 @@ import { UserPreferencesComponent } from "./components/controls/user-preferences
 import { UsersManagementComponent } from "./components/controls/users-management.component";
 import { RolesManagementComponent } from "./components/controls/roles-management.component";
 import { RoleEditorComponent } from "./components/controls/role-editor.component";
+import { CaseService } from './services/case.services';
+import { CaseEndpoint } from './services/case-endpoint';
+import { CasesComponent } from './components/cases/cases.component';
 
 @NgModule({
     imports: [
@@ -96,6 +99,7 @@ import { RoleEditorComponent } from "./components/controls/role-editor.component
         ProductsComponent,
         OrdersComponent,
         SettingsComponent,
+        CasesComponent,
         UsersManagementComponent, UserInfoComponent, UserPreferencesComponent,
         RolesManagementComponent, RoleEditorComponent,
         AboutComponent,
@@ -126,7 +130,9 @@ import { RoleEditorComponent } from "./components/controls/role-editor.component
         LocalStoreManager,
         EndpointFactory,
         OrderService,
-        OrderEndpoint
+        OrderEndpoint,
+        CaseService,
+        CaseEndpoint
     ],
     bootstrap: [AppComponent]
 })

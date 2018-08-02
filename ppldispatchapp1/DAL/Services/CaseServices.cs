@@ -20,12 +20,12 @@ namespace DAL.Services
             DateTime beginDate;
             DateTime endDate;
 
-            if (caseQuery.BeginDate.Length > 0)
+            if (caseQuery.BeginDate != null && caseQuery.BeginDate.Length > 0)
             {
                 if (DateTime.TryParse(caseQuery.BeginDate, out beginDate))
                 {
                     String.Format("{0:yyyy/MM/dd}", beginDate);
-                    if (caseQuery.EndDate.Length ==0)
+                    if (caseQuery.EndDate ==null)
                     {
                         cases = _unitOfWork.Cases.Find(c => c.ResolvedDate >= beginDate).AsQueryable<Case>();
                     }
@@ -36,7 +36,7 @@ namespace DAL.Services
                     }
                     if (caseQuery.Customer > 0)
                         cases = cases.Where<Case>(c => c.Customer == caseQuery.Customer).AsQueryable<Case>();
-                    if (caseQuery.Employee>0)
+                    if (caseQuery.Employee > 0)
                         cases = cases.Where<Case>(c => c.AssignedTo == caseQuery.Employee).AsQueryable<Case>();
                 }
             }

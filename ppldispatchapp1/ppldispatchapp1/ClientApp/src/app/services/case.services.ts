@@ -13,6 +13,7 @@ import { Role } from '../models/role.model';
 import { Case } from '../models/case.model';
 import { CaseEndpoint } from './case-endpoint';
 import { Permission, PermissionNames, PermissionValues } from '../models/permission.model';
+import { CaseSearch } from '../models/CaseSearch.model';
 export const CASES: Case[] = [
     { id: 11, roomnbr: '111', caseprice: 1.25, employeename: 'no name', resolveddate: '2018-05-01', employeecomision: 1.12 },
     { id: 22, roomnbr: '112', caseprice: 1.12, employeename: 'no name', resolveddate: '2018-05-01', employeecomision: 1.12},
@@ -27,7 +28,8 @@ export class CaseService {
 
     getCases() {
 
-        return of(CASES);
-        //return this.caseEndpoint.getCases <Case[]>();
+        //return of(CASES);
+       var caseSearch = new CaseSearch('2018-05-01');
+       return this.caseEndpoint.getCasesEndpoint <Case[]>(caseSearch);
     }
 }

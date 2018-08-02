@@ -16,8 +16,8 @@ import { Case } from '../../models/case.model';
     styleUrls: ['./cases.component.css'],
     animations: [fadeInOut]
 })
-export class CasesComponent implements OnInit{
-    cases : Case[];
+export class CasesComponent implements OnInit {
+    cases: Case[];
     columns: any[] = [];
     rows: Case[] = [];
     rowsCache: Case[] = [];
@@ -28,41 +28,42 @@ export class CasesComponent implements OnInit{
     RoomTemplate: TemplateRef<any>;
 
     constructor(private alertService: AlertService, private translationService: AppTranslationService,
-                private orderService: CaseService) {
+                private caseService: CaseService) {
     }
     ngOnInit() {
         let gT = (key: string) => this.translationService.getTranslation(key);
 
         this.columns = [
-            { prop: "index", name: '#', width: 40, cellTemplate: this.indexTemplate, canAutoResize: false },
-            { prop: 'price', name: gT('Case.caseprice'), width: 50 },
+            { prop: 'index', name: '#', width: 40, cellTemplate: this.indexTemplate, canAutoResize: false },
+            { prop: 'caseprice', name: gT('Case.caseprice'), width: 50 },
             { prop: 'roomnbr', name: gT('Case.Roomnbr'), width: 20, cellTemplate: this.RoomTemplate },
             { prop: 'employeefee', name: gT('Case.employee fee'), width: 50 },
             { prop: 'employeename', name: gT('Case.employee name'), width: 50 },
             { prop: 'employeecomision', name: gT('Case.employee comisions'), width: 50 },
+            { prop: 'resolveddate', name: gT('Case.completeddate'), width: 50 },
         ];
         this.loadData();
     }
     loadData() {
         this.alertService.startLoadingMessage();
-        this.orderService.getCases().
+        this.caseService.getCases().
             subscribe(
-                orders => this.onDataLoadSuccessful(orders),
+                cases => this.onDataLoadSuccessful(cases),
                 error => this.onDataLoadFailed(error)
             );
     }
 
     onDataLoadSuccessful(cases: Case[]) {
         this.alertService.stopLoadingMessage();
-        cases.forEach((order, index, orders) => {
-            (<any>order).index = index + 1;
-        });
-        this.rows = this.cases=cases;
-        
+       /* cases.forEach((case, index, cases) => {
+            (<any>case).index = index + 1;
+        });*/
+        this.rows = this.cases = cases;
     }
     onDataLoadFailed(error: any) {
         this.alertService.stopLoadingMessage();
-        this.alertService.showStickyMessage("Load Error", `Unable to retrieve users from the server.\r\nErrors: "${Utilities.getHttpResponseMessage(error)}"`,
+        this.alertService.showStickyMessage('Load Error',
+                `Unable to retrieve users from the server.\r\nErrors: "${Utilities.getHttpResponseMessage(error)}"`,
             MessageSeverity.error, error);
     }
 }
