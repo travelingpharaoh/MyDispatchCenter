@@ -14,11 +14,7 @@ import { Case } from '../models/case.model';
 import { CaseEndpoint } from './case-endpoint';
 import { Permission, PermissionNames, PermissionValues } from '../models/permission.model';
 import { CaseSearch } from '../models/CaseSearch.model';
-export const CASES: Case[] = [
-    { id: 11, roomnbr: '111', caseprice: 1.25, employeename: 'no name', resolveddate: '2018-05-01', employeecomision: 1.12 },
-    { id: 22, roomnbr: '112', caseprice: 1.12, employeename: 'no name', resolveddate: '2018-05-01', employeecomision: 1.12},
-    { id: 33, roomnbr: '112', caseprice: 1.12, employeename: 'no name', resolveddate: '2018-05-01', employeecomision: 1.12}
-]
+
 @Injectable()
 export class CaseService {
     constructor(private router: Router, private http: HttpClient, private authService: AuthService,

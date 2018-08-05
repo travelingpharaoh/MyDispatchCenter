@@ -15,8 +15,8 @@ import { Order } from '../../models/order.model';
     styleUrls: ['./orders.component.css'],
     animations: [fadeInOut]
 })
-export class OrdersComponent implements OnInit{
-    orders : Order[];
+export class OrdersComponent implements OnInit {
+    orders: Order[];
     columns: any[] = [];
     rows: Order[] = [];
     rowsCache: Order[] = [];
@@ -53,8 +53,7 @@ export class OrdersComponent implements OnInit{
         orders.forEach((order, index, orders) => {
             (<any>order).index = index + 1;
         });
-        this.rows = this.orders=orders;
-        
+        this.rows = this.orders = orders;
     }
     onDataLoadFailed(error: any) {
         this.alertService.stopLoadingMessage();

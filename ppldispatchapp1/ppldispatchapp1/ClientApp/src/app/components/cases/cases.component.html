@@ -24,10 +24,19 @@
     <ng-template #indexTemplate let-value="value">
         <strong>{{value}}</strong>
     </ng-template>
-
+    <ng-template #PriceTemplate let-row="row" let-value="value">
+        <span>
+            {{value| currency:"$"}}
+        </span>
+    </ng-template>
     <ng-template #RoomTemplate let-row="row" let-value="value">
         <span>
             {{value}}
+        </span>
+    </ng-template>
+    <ng-template #DateTemplate let-row="row" let-value="value">
+        <span>
+            {{value | date:'yyyy-MM-dd'}}
         </span>
     </ng-template>
 </div>

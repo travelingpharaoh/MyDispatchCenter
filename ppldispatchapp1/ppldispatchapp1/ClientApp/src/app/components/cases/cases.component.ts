@@ -9,7 +9,6 @@ import { Case } from '../../models/case.model';
 
 
 
-
 @Component({
     selector: 'cases',
     templateUrl: './cases.component.html',
@@ -21,12 +20,10 @@ export class CasesComponent implements OnInit {
     columns: any[] = [];
     rows: Case[] = [];
     rowsCache: Case[] = [];
-    @ViewChild('indexTemplate')
-    indexTemplate: TemplateRef<any>;
-
-    @ViewChild('RoomTemplate')
-    RoomTemplate: TemplateRef<any>;
-
+    @ViewChild('indexTemplate') indexTemplate: TemplateRef<any>;
+    @ViewChild('RoomTemplate') RoomTemplate: TemplateRef<any>;
+    @ViewChild('DateTemplate') DateTemplate: TemplateRef<any>;
+    @ViewChild('PriceTemplate') PriceTemplate: TemplateRef<any>;
     constructor(private alertService: AlertService, private translationService: AppTranslationService,
                 private caseService: CaseService) {
     }
@@ -35,12 +32,11 @@ export class CasesComponent implements OnInit {
 
         this.columns = [
             { prop: 'index', name: '#', width: 40, cellTemplate: this.indexTemplate, canAutoResize: false },
-            { prop: 'caseprice', name: gT('Case.caseprice'), width: 50 },
-            { prop: 'roomnbr', name: gT('Case.Roomnbr'), width: 20, cellTemplate: this.RoomTemplate },
-            { prop: 'employeefee', name: gT('Case.employee fee'), width: 50 },
-            { prop: 'employeename', name: gT('Case.employee name'), width: 50 },
-            { prop: 'employeecomision', name: gT('Case.employee comisions'), width: 50 },
-            { prop: 'resolveddate', name: gT('Case.completeddate'), width: 50 },
+            { prop: 'title', name: gT('Case.Roomnbr'), width: 20, cellTemplate: this.RoomTemplate },
+            { prop: 'employeeName', name: gT('Case.employeename'), width: 50 },
+            { prop: 'employeeComision', name: gT('Case.employeecomisions'), cellTemplate: this.PriceTemplate, width: 20 },
+            { prop: 'resolvedDate', name: gT('Case.resolveddate'), cellTemplate: this.DateTemplate , width: 50 },
+            { prop: 'casePrice', name: gT('Case.caseprice'), width: 20, cellTemplate: this.PriceTemplate },
         ];
         this.loadData();
     }
@@ -53,12 +49,13 @@ export class CasesComponent implements OnInit {
             );
     }
 
-    onDataLoadSuccessful(cases: Case[]) {
+    onDataLoadSuccessful(arrcases: Case[]) {
         this.alertService.stopLoadingMessage();
-       /* cases.forEach((case, index, cases) => {
-            (<any>case).index = index + 1;
-        });*/
-        this.rows = this.cases = cases;
+        arrcases.forEach((acase, index, arrcases) => {
+            (<any>acase).index = index + 1;
+        });
+        this.cases = arrcases;
+        this.rows = this.cases;
     }
     onDataLoadFailed(error: any) {
         this.alertService.stopLoadingMessage();

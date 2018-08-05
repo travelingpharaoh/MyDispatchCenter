@@ -189,6 +189,6 @@
         "Roomnbr": "Apt. Nbr",
         "employeefee": "Employee Fee",
         "employeecomisions": "Employee Comision",
-        "affecteddate":"Affected Date"
+        "resolveddate":"Resolved Date"
     }
 }
